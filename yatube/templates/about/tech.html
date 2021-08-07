@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+  <div class="row">
+    <!-- Левый вспомогательный блок -->
+    <div class="col-md-3 mb-3 mt-1">
+      <div class="card">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="h3">
+                Технологии
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="h6 text-muted">
+                Что же я тут использовал?
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Тело страницы -->
+    <div class="col-md-9">
+      <div class="card-body">
+        <div class="card-text">
+          <p>В начале было Слово...</p>
+          <ul>
+            <li>
+              Python 3.9.0
+              <a href="https://www.python.org/downloads/release/python-390/" title="download" target="_blank">
+                (установить)
+              </a>
+            </li>
+            <li>
+              Django 2.2.9
+              <a href="https://docs.djangoproject.com/en/3.2/releases/2.2.9/" title="download" target="_blank">
+                (документация)
+              </a>
+            </li>
+            <li>
+              HTML 5
+              <a href="https://ru.wikipedia.org/wiki/HTML#%D0%92%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D1%8B_DOCTYPE_%D0%B4%D0%BB%D1%8F_HTML_5"
+                      title="download" target="_blank">
+                (wikipedia)
+              </a>
+            </li>
+            <li>
+              SQLite3
+              <a href="https://www.sqlite.org/index.html" title="download" target="_blank">
+                (Home Page)
+              </a>
+            </li>
+            <li>
+              sorl-thumbnail
+              <a href="https://github.com/jazzband/sorl-thumbnail" title="download" target="_blank">
+                (github)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

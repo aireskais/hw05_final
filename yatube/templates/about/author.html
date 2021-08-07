@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load static %}
+
+  <div class="row">
+    <!-- Левый вспомогательный блок -->
+    <div class="col-md-3 mb-3 mt-1">
+      <div class="card">
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="h3">
+                Об авторе
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="h6 text-muted">
+                <a href="https://github.com/aireskais" title="я на github.com" target="_blank">
+                  Андрис Рескайс(GIT)
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Тело страницы -->
+
+    <div class="col-md-9">
+      <div class="card-body">
+        <div class="card-text">
+          <p>
+            <img src="{% static 'img/author.png' %}" alt="автор" title="Как молоды мы были" height="300">
+          </p>
+          <h3>Всем привет!</h3>
+          <p>
+            Вот таким я пришел в мир IT, фото из рабочего профиля.
+            Тружусь я тестировщиком ПО, эта профессия и вдохновила меня освоить
+            не просто проверку продукта, но и умение его <b>создать</b> самому.<br>
+            Работать днем(а часто и вечером), заниматься вечером(часто и ночь),
+            дежурить по выходным - крайне тяжело. Справиться с этим мне помогает
+            моя большая и дружная <b>семья</b>: любимая супруга,
+            красавица дочка и карапуз сынуля =)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

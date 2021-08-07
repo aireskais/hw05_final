@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Профиль пользователя {{ author.username }}  | Yatube{% endblock %}
+{% block header %}{{ group.title }}{% endblock %}
+{% block content %}
+<main role="main" class="container">
+  <div class="row">
+
+    {% include "includes/card_author.html" with post=post author=author following=following %}
+
+    <div class="col-md-9">
+      {% for post in page %}
+      {% include "includes/card_post.html" with post=post %}
+
+      {% if not forloop.last %}<hr>{% endif %}
+      {% endfor %}
+
+      {% include "includes/paginator.html" with items=page paginator=paginator %}
+    </div>
+  </div>
+</main>
+{% endblock %}
