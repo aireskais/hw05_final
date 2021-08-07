@@ -103,7 +103,7 @@ def post_edit(request, username, post_id):
     if form.is_valid():
         form.save()
         return redirect('post', username=username, post_id=post_id)
-    return render(request, 'new.html', {'form': form})
+    return render(request, 'new.html', {'form': form, 'post': edit_post})
 
 
 @login_required
