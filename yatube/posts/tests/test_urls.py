@@ -33,7 +33,7 @@ class URLTests(TestCase):
             # страница группы
             f'/group/{__class__.group}/',
             # страница профайла
-            f'/{self.user.username}/',
+            # f'/{self.user.username}/',
             # страница отдельного поста
             f'/{__class__.author.username}/{__class__.post.id}/'
         )
