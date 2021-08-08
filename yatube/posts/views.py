@@ -44,8 +44,8 @@ def profile(request, username):
     page = paginator.get_page(page_number)
     following = False
     if request.user.is_authenticated and Follow.objects.filter(
-            author=author,
-            user=request.user
+            author_id=author.id,
+            user_id=request.user.id
     ):
         following = True
 
@@ -118,7 +118,12 @@ def add_comment(request, username, post_id):
         comment.post = post
         form.save()
         return redirect('post', username=username, post_id=post_id)
-    return render(request, 'post.html', {'post': post, 'form': form})
+    return render(
+        request, 'post.html',
+        {'post': post,
+         'form': form,
+         }
+    )
 
 
 def page_not_found(request, exception):
