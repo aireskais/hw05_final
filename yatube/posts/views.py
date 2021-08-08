@@ -74,6 +74,7 @@ def post_view(request, username, post_id):
         request,
         'post.html',
         {'post': post,
+         'author': post.author,
          'form': form,
          'comments': comment,
          'following': following,
@@ -121,6 +122,7 @@ def add_comment(request, username, post_id):
     return render(
         request, 'post.html',
         {'post': post,
+         'author': post.author,
          'form': form,
          }
     )
