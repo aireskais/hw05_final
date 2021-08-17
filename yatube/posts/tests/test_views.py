@@ -79,7 +79,7 @@ class URLTests(TestCase):
 
     def test_follow_authorized_user(self):
         """ Авторизованный пользователь может подписываться
-        на других пользователей и удалять их из подписок
+        на других пользователей
         """
         self.authorized_user.get(
             reverse(
@@ -92,13 +92,25 @@ class URLTests(TestCase):
             author_id=self.__class__.author.id,
         )
         self.assertTrue(follower_string)
-        # а теперь отпишемся от него
+
+    def test_unfollow_authorized_user(self):
+        """ Авторизованный пользователь может отписаться от автора """
         self.authorized_user.get(
             reverse(
-                'profile_unfollow',
+                'profile_follow',
                 args=[f'{self.__class__.author.username}']
             )
         )
+        if Follow.objects.filter(
+                user_id=self.user.id,
+                author_id=self.__class__.author.id,
+        ):
+            self.authorized_user.get(
+                reverse(
+                    'profile_unfollow',
+                    args=[f'{self.__class__.author.username}']
+                )
+            )
         follower_string = Follow.objects.filter(
             user_id=self.user.id,
             author_id=self.__class__.author.id,
@@ -145,7 +157,7 @@ class URLTests(TestCase):
             response,
             f'/auth/login/?next='
             f'/{self.__class__.author.username}'
-            f'/{self.__class__.post_list[0].id}/comment'
+            f'/{self.__class__.post_list[0].id}/comment/'
         )
 
     def test_show_post_with_image(self):

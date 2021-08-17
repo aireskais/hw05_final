@@ -46,7 +46,7 @@ def profile(request, username):
     if request.user.is_authenticated and Follow.objects.filter(
             author_id=author.id,
             user_id=request.user.id
-    ):
+    ).exists():
         following = True
 
     return render(
@@ -68,7 +68,7 @@ def post_view(request, username, post_id):
     if not request.user.is_anonymous and Follow.objects.filter(
             author=post.author,
             user=request.user
-    ):
+    ).exists():
         following = True
     return render(
         request,
@@ -143,11 +143,7 @@ def server_error(request):
 
 @login_required
 def follow_index(request):
-    following_author_list = Follow.objects.filter(user=request.user).distinct()
-    post_list = []
-    for string in following_author_list:
-        for post in Post.objects.filter(author=string.author).all().distinct():
-            post_list.append(post)
+    post_list = Post.objects.filter(author__following__user=request.user)
     paginator = Paginator(post_list, settings.POSTS_FOR_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
@@ -161,7 +157,7 @@ def profile_follow(request, username):
     if author != user and not Follow.objects.filter(
             user_id=user.id,
             author_id=author.id
-    ):
+    ).exists():
         Follow.objects.create(user_id=user.id, author_id=author.id)
     return redirect('profile', username)
 
