@@ -31,3 +31,4 @@ class FollowAdmin(admin.ModelAdmin):
     search_fields = ('user',)
     list_filter = ('user',)
 
+
