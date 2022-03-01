@@ -5,6 +5,6 @@
 Python 3.7
 Django 2.2.19
 ### Тут запущенный проект:
-(http://andrisfood.ddns.net:9900/)
+https://testtube.ddns.net
 ### Автор
 Андрис
